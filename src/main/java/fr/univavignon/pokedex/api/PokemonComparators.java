@@ -17,7 +17,7 @@ public enum PokemonComparators implements Comparator<Pokemon> {
 	
 	/** Comparator using Pokemon combat point. **/
 	CP(Comparator.comparing(Pokemon::getCp))
-	
+
 	;
 	
 	/** Delegate comparator instance. **/
