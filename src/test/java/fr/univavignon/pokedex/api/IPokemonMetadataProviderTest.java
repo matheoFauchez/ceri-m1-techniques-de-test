@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class IPokemonMetadataProviderTest {
 
@@ -34,6 +36,7 @@ public class IPokemonMetadataProviderTest {
     public void shouldReturnPikachuMetadata_When25Index() throws PokedexException
     {
         assertEquals(pikachuMetadata, pokemonMetadataProvider.getPokemonMetadata(25));
+        verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(25);
     }
 
     /**
@@ -45,6 +48,7 @@ public class IPokemonMetadataProviderTest {
         assertThrows(PokedexException.class, () ->
         {
             pokemonMetadataProvider.getPokemonMetadata(26);
+            verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(26);
         });
     }
 
