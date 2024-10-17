@@ -13,20 +13,22 @@ import static org.mockito.Mockito.verify;
 
 public class IPokedexTest {
     IPokedex pokedex;
-    Pokemon pikachu;
+    Pokemon bulbizarre;
     List<Pokemon> pokemons;
 
     @Before
     public void initialiseVariables() throws PokedexException
     {
-        pikachu = new Pokemon(25, "Pikachu", 2, 3, 4, 5, 6, 7, 8, 9);
+        bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         //pokemons.add(pikachu);
 
         pokedex = Mockito.mock(IPokedex.class);
         Mockito.when(pokedex.size()).thenReturn(1);
-        Mockito.when(pokedex.addPokemon(pikachu)).thenReturn(pikachu.getIndex());
+        Mockito.when(pokedex.addPokemon(bulbizarre)).thenReturn(bulbizarre.getIndex());
         Mockito.when(pokedex.getPokemon(26)).thenThrow(new PokedexException("Erreur pokemon inexistant"));
-        Mockito.when(pokedex.getPokemon(25)).thenReturn(pikachu);
+        Mockito.when(pokedex.getPokemon(151)).thenThrow(new PokedexException("Index invalide, doit etre inferieur ou egal a 150"));
+        Mockito.when(pokedex.getPokemon(-1)).thenThrow(new PokedexException("Index invalide, doit etre supérieur ou egal a 0"));
+        Mockito.when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
         Mockito.when(pokedex.getPokemons()).thenReturn(pokemons);
         Mockito.when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(pokemons);
     }
@@ -39,16 +41,16 @@ public class IPokedexTest {
     }
 
     @Test
-    public void shouldReturn25_WhenPikachuAdded()
+    public void shouldReturn25_WhenBulbizarreAdded()
     {
-        assertEquals(25, pokedex.addPokemon(pikachu));
-        verify(pokedex, times(1)).addPokemon(pikachu);
+        assertEquals(0, pokedex.addPokemon(bulbizarre));
+        verify(pokedex, times(1)).addPokemon(bulbizarre);
     }
 
     @Test
-    public void shouldReturnPikachu_WhenGetPokemon25() throws PokedexException {
-        assertEquals(pikachu, pokedex.getPokemon(25));
-        verify(pokedex, times(1)).getPokemon(25);
+    public void shouldReturnBulbizarre_WhenGetPokemon25() throws PokedexException {
+        assertEquals(bulbizarre, pokedex.getPokemon(0));
+        verify(pokedex, times(1)).getPokemon(0);
     }
 
     @Test
@@ -57,6 +59,24 @@ public class IPokedexTest {
         assertThrows(PokedexException.class, () -> {
            pokedex.getPokemon(26);
            verify(pokedex, times(1)).getPokemon(26);
+        });
+    }
+
+    @Test
+    public void shouldThrowPokedexException_WhenGetPokemon151()
+    {
+        assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(151);
+            verify(pokedex, times(1)).getPokemon(151);
+        });
+    }
+
+    @Test
+    public void shouldThrowPokedexException_WhenGetPokemonNegative()
+    {
+        assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(-1);
+            verify(pokedex, times(1)).getPokemon(-1);
         });
     }
 
