@@ -37,7 +37,7 @@ jobs:
     steps:
       - checkout
       - codecov/upload:
-          token: $CODECOV_TOKEN
+          token: CODECOV_TOKEN
           file: target/site/jacoco/jacoco.xml
 
 workflows:
