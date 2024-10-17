@@ -2,12 +2,15 @@
 # Stacks detected: deps:java:.
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@4.0.1  # Intégration de l'orb Codecov
+
 jobs:
   test-java:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:17.0  # Utilisation de Java 17
     steps:
-      - checkout
+      - checkout  # Récupération du code source
       - run:
           name: Calculate cache key
           command: |-
@@ -16,30 +19,26 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          command: mvn verify
+          command: mvn verify  # Exécution des tests et génération des rapports
       - store_test_results:
           path: target/surefire-reports
       - save_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml
+
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
       - image: cimg/base:stable
     steps:
-      # Replace this with steps to deploy to users
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
-#orbs:
-#  codecov: codecov/codecov@4.0.1
+
 workflows:
   build-and-test:
     jobs:
       - test-java
-#  upload-to-codecov:
-#    jobs:
-#      - checkout
-#      - codecov/upload
-
