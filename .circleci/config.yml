@@ -30,18 +30,19 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+
+  upload-codecov:
+    docker:
+      - image: cimg/openjdk:17.0
+    steps:
+      - checkout
       - codecov/upload:
           file: target/site/jacoco/jacoco.xml
-
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
 
 workflows:
   build-and-test:
     jobs:
       - test-java
+      - upload-codecov:
+          requires:
+            - test-java
