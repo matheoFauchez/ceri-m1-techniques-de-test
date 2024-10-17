@@ -46,6 +46,7 @@ public class IPokemonFactoryTest
         assertTrue("La défense de l'individu doit être comprise entre 0 et 15", pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense()>=0 || pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense()<=15);
         assertTrue("L'endurance de l'individu doit être comprise entre 0 et 15", pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina()>=0 || pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina()<=15);
     }
+
     @Test
     public void checkIfTheIvHasBennCorrectlyCalculated() throws PokedexException {
         Pokemon pokemonTest = pokemonFactory.createPokemon(0,613,64,4000,4);
@@ -57,8 +58,6 @@ public class IPokemonFactoryTest
         assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", pokemonTestAttack==pokemonTestIv);
         assertTrue("Le pourcentage d'iv pour la defense a mal été calculé", pokemonTestDefense==pokemonTestIv);
         assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", pokemonTestStamina==pokemonTestIv);
-
-
     }
 
 }
