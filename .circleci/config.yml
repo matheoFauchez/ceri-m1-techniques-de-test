@@ -26,6 +26,13 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+  codecov-upload:
+    docker:
+      - image: cimg/openjdk:17.0  # Utilisation de la même image Docker que pour les tests
+    steps:
+      - checkout  # Récupère le code source
+      - codecov/upload
+
   deploy:
     docker:
       - image: cimg/base:stable
