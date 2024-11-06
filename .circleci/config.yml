@@ -28,6 +28,8 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+  codecov-upload:
+    steps:
       - run:
           name: Upload coverage to Codecov
           command: codecov
@@ -48,6 +50,6 @@ workflows:
     # - deploy:
     #     requires:
     #       - test-java
-      - codecov/upload:
+      - codecov-upload:
           requires:
             - test-java
