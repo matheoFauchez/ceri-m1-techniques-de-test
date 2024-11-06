@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: |-
-            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN
+            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml
           environment:
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   deploy:
@@ -51,4 +51,6 @@ workflows:
       - test-java
   upload-to-codecov:
     jobs:
-      - codecov
+      - codecov:
+          requires:
+            - test-java
