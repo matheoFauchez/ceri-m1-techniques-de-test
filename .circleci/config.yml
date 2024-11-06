@@ -31,7 +31,8 @@ jobs:
       - image: cimg/openjdk:17.0  # Utilisation de la même image Docker que pour les tests
     steps:
       - checkout  # Récupère le code source
-      - codecov/upload
+      - codecov/upload:
+          token: ${{ CODECOV_TOKEN }}
 
   deploy:
     docker:
