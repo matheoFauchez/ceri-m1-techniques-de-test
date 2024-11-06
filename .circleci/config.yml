@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout  # Récupère le code source
       - codecov/upload:
-          token: ${ CODECOV_TOKEN }
+          token: CODECOV_TOKEN
 
   deploy:
     docker:
