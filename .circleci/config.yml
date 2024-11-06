@@ -5,10 +5,15 @@ name: CircleCI + CodeCov
 orbs:
   codecov: codecov/codecov@4.0.1
 
-jobs:
-  test-java:
+executors:
+  java-executor:
     docker:
       - image: cimg/openjdk:17.0
+    working_directory: ~/repo
+
+jobs:
+  test-java:
+    executor: java-executor
     steps:
       - checkout
       - run:
@@ -26,14 +31,14 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+
   codecov-upload:
-    docker:
-      - image: cimg/openjdk:17.0  # Utilisation de la même image Docker que pour les tests
+    executor: java-executor
+    environment:
+      CODECOV_TOKEN: $CODECOV_TOKEN
     steps:
-      - checkout  # Récupère le code source
-      - codecov/upload:
-          token: CODECOV_TOKEN
-          verbose: true
+      - checkout
+      - codecov/upload
 
   deploy:
     docker:
