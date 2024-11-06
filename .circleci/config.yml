@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: |
-            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN -r "matheoFauchez/ceri-m1-techniques-de-test"
+            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN -r "matheoFauchez/ceri-m1-techniques-de-test" -f target/site/jacoco/jacoco.xml
 
 
   deploy:
