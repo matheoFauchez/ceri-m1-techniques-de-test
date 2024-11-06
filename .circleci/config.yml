@@ -36,10 +36,6 @@ jobs:
     executor: java-executor
     steps:
       - checkout
-      - run:
-        name: Display slug
-        command:
-          echo "Slug: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
       - codecov/upload
 
 
