@@ -1,45 +1,40 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:java:.
 version: 2.1
-
-orbs:
-  codecov: codecov/codecov@4.0.1
-
-executors:
-  java-executor:
-    docker:
-      - image: cimg/openjdk:17.0
-
 jobs:
   test-java:
-    executor: java-executor
+    docker:
+      - image: cimg/openjdk:17.0
     steps:
       - checkout
       - run:
           name: Calculate cache key
           command: |-
-            find . -name 'pom.xml' | sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
+            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
+                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          command: mvn clean install
+          command: mvn verify
       - store_test_results:
           path: target/surefire-reports
       - save_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
-
-  upload-codecov:
-    executor: java-executor
+  deploy:
+    # This is an example deploy job, not actually used by the workflow
+    docker:
+      - image: cimg/base:stable
     steps:
-      - checkout
-      - codecov/upload:
-          token: $CODECOV_TOKEN
-          file: target/site/jacoco/jacoco.xml
-
+      # Replace this with steps to deploy to users
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
 workflows:
   build-and-test:
     jobs:
       - test-java
-      - upload-codecov:
-          requires:
-            - test-java
+    # - deploy:
+    #     requires:
+    #       - test-java
