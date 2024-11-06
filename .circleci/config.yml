@@ -33,6 +33,7 @@ jobs:
       - checkout  # Récupère le code source
       - codecov/upload:
           token: CODECOV_TOKEN
+          verbose: true
 
   deploy:
     docker:
