@@ -46,11 +46,9 @@ jobs:
           command: '#e.g. ./deploy.sh'
 
 workflows:
-  build-and-test:
+  build-and-test-and-codecov:
     jobs:
       - test-java
-  upload-to-codecov:
-    jobs:
       - codecov:
           requires:
             - build-and-test
