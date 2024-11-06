@@ -36,10 +36,8 @@ jobs:
     executor: java-executor
     steps:
       - checkout
-      - run:
-          name: Afficher CODECOV_TOKEN
-          command: echo "CODECOV_TOKEN is $CODECOV_TOKEN"
-      - codecov/upload
+      - codecov/upload:
+          slug: "matheoFauchez/ceri-m1-techniques-de-test"
 
 
   deploy:
