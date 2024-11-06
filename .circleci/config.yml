@@ -36,8 +36,7 @@ jobs:
     executor: java-executor
     steps:
       - checkout
-      - codecov/upload:
-          slug: "matheoFauchez/ceri-m1-techniques-de-test"
+      - codecov/upload
 
 
   deploy:
