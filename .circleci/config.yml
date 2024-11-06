@@ -51,4 +51,4 @@ workflows:
       - test-java
       - codecov:
           requires:
-            - build-and-test
+            - test-java
