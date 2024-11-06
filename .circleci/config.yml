@@ -34,11 +34,13 @@ jobs:
 
   codecov-upload:
     executor: java-executor
-    environment:
-      CODECOV_TOKEN: $CODECOV_TOKEN
     steps:
       - checkout
+      - run:
+          name: Afficher CODECOV_TOKEN
+          command: echo "CODECOV_TOKEN is $CODECOV_TOKEN"
       - codecov/upload
+
 
   deploy:
     docker:
