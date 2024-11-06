@@ -27,15 +27,16 @@ jobs:
           paths:
             - ~/.m2/repository
   codecov:
-    runs-on: ubuntu-latest
+    docker:
+      - image: cimg/openjdk:17.0
     steps:
+      - checkout
       - run:
-        name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          verbose: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          name: Upload coverage to Codecov
+          command: |-
+            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN
+          environment:
+            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   deploy:
     docker:
       - image: cimg/base:stable
