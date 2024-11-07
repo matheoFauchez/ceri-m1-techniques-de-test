@@ -5,6 +5,9 @@ name: CircleCI + CodeCov
 orbs:
   codecov: codecov/codecov@4.0.1
 
+env:
+  CODECOV_TOKEN_L: '9de0e19d-d929-4db6-9ad6-cb2ffc9f783d'
+
 executors:
   java-executor:
     docker:
@@ -39,7 +42,7 @@ jobs:
       - checkout
       - codecov/upload:
           file: 'target/site/jacoco/jacoco.xml'
-          token: CODECOV_TOKEN
+          token: $CODECOV_TOKEN
 
 
   #deploy:
