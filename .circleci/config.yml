@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: maven:3.8.5-openjdk-11
     steps:
       - checkout
       - run:
@@ -14,13 +14,13 @@ jobs:
           command: mvn verify
   upload-to-codecov:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: maven:3.8.5-openjdk-11
     steps:
       - checkout
       - run:
           name: Upload coverage to Codecov
           command: |-
-            curl -s https://codecov.io/bash | bash -s -f target/site/jacoco/jacoco.xml
+            curl -s https://codecov.io/bash | bash -s -- -f target/site/jacoco/jacoco.xml
 
 workflows:
   version: 2
