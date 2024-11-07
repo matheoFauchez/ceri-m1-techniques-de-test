@@ -26,7 +26,11 @@ jobs:
 #          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
 #          paths:
 #            - ~/.m2/repository
-      - codecov/upload
+      - run : mvn jacoco:report
+      - run:
+          name: Upload coverage to Codecov
+          command: |-
+            curl -s https://codecov.io/bash | bash -s
 
 
 
