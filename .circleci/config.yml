@@ -11,26 +11,27 @@ jobs:
       - image: cimg/openjdk:17.0
     steps:
       - checkout
-#      - run:
-#          name: Calculate cache key
-#          command: |-
-#            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
-#                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
-#      - restore_cache:
-#          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+      - run:
+          name: Calculate cache key
+          command: |-
+            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
+                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
+      - restore_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           command: mvn verify
-#      - store_test_results:
-#          path: target/surefire-reports
-#      - save_cache:
-#          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-#          paths:
-#            - ~/.m2/repository
+      - store_test_results:
+          path: target/surefire-reports
+      - save_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          paths:
+            - ~/.m2/repository
       - run : mvn jacoco:report
-      - run:
-          name: Upload coverage to Codecov
-          command: |-
-            curl -s https://codecov.io/bash | bash -s
+      - codecov/upload
+#      - run:
+#          name: Upload coverage to Codecov
+#          command: |-
+#            curl -s https://codecov.io/bash | bash -s
 
 
 
