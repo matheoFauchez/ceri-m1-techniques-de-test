@@ -17,10 +17,7 @@ jobs:
       - image: maven:3.8.5-openjdk-11
     steps:
       - checkout
-      - run:
-          name: Upload coverage to Codecov
-          command: |-
-            curl -s https://codecov.io/bash | bash -s -- -f ./target/site/jacoco/jacoco.xml
+      - rcodecov/upload
 
 workflows:
   version: 2
