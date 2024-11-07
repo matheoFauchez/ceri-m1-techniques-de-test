@@ -3,7 +3,7 @@ version: 2.1
 name: CircleCI + CodeCov
 
 orbs:
-  codecov: codecov/codecov@2
+  codecov: codecov/codecov@1
 
 jobs:
   test-java:
