@@ -10,11 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Maven Build
-          command: mvn clean install
-      - run:
           name: Run Tests
-          command: mvn test
+          command: mvn verify
   upload-to-codecov:
     docker:
       - image: maven:3.8.5-openjdk-11
