@@ -37,7 +37,8 @@ jobs:
     executor: java-executor
     steps:
       - checkout
-      - codecov/upload
+      - codecov/upload:
+          file: './target/site/jacoco/jacoco.xml'
 
 
   #deploy:
