@@ -3,7 +3,7 @@ version: '2.1'
 name: CircleCI + CodeCov
 
 orbs:
-  codecov: codecov/codecov@4.0.1
+  codecov: codecov/codecov@3
 
 jobs:
   test-java:
@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: |-
-            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml
+            curl -s https://codecov.io/bash | bash -s
 
 
 
