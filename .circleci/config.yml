@@ -47,11 +47,3 @@ jobs:
   #    - run:
   #        name: deploy
   #        command: '#e.g. ./deploy.sh'
-
-workflows:
-  build-test-and-codecov:
-    jobs:
-      - test-java
-      - codecov-upload:
-          requires:
-            - test-java
