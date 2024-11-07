@@ -3,7 +3,7 @@ version: 2.1
 name: CircleCI + CodeCov
 
 orbs:
-  codecov: codecov/codecov@4.0.1
+  codecov: codecov/codecov@4.7.0
 
 executors:
   java-executor:
