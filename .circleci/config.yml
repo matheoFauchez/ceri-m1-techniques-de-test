@@ -1,30 +1,45 @@
 version: 2.1
 
+name: CircleCI + CodeCov
+
 orbs:
   codecov: codecov/codecov@3
 
 jobs:
-  build:
+  test-java:
     docker:
       - image: maven:3.8.5-openjdk-11
     steps:
       - checkout
       - run:
-          name: Run Tests
+          name: Calculate cache key
+          command: |-
+            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
+                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
+      - restore_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+      - run:
           command: mvn verify
-  upload-to-codecov:
-    docker:
-      - image: maven:3.8.5-openjdk-11
-    steps:
-      - checkout
-      - codecov/upload:
-          file: ./target/site/jacoco/jacoco.xml
+      - store_test_results:
+          path: target/surefire-reports
+      - save_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          paths:
+            - ~/.m2/repository
+      - codecov/upload
+
+
+
+
+  #deploy:
+  #  docker:
+  #    - image: cimg/base:stable
+  #  steps:
+  #    - run:
+  #        name: deploy
+  #        command: '#e.g. ./deploy.sh'
 
 workflows:
-  version: 2
-  build_and_upload:
+  build-test-and-codecov:
     jobs:
-      - build
-      - upload-to-codecov:
-          requires:
-            - build
+      - test-java
