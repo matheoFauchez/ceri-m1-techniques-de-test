@@ -27,6 +27,9 @@ jobs:
           paths:
             - ~/.m2/repository
       - run : mvn jacoco:report
+      - run:
+          name: Run tests and collect coverage
+          command: mvn -B test
       - codecov/upload
 #      - run:
 #          name: Upload coverage to Codecov
