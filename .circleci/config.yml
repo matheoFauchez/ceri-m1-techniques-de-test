@@ -46,7 +46,7 @@ jobs:
   #        name: deploy
   #        command: '#e.g. ./deploy.sh'
 
-workflow:
+workflows:
   build-test-and-codecov:
     jobs:
       - test-java
