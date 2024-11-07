@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@5
+  codecov: codecov/codecov@3
 
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:17.0
     steps:
       - checkout
       - run:
@@ -14,7 +14,7 @@ jobs:
           command: mvn verify
   upload-to-codecov:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:17.0
     steps:
       - checkout
       - codecov/upload
