@@ -8,7 +8,7 @@ orbs:
 jobs:
   test-java:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:18.0.2
     steps:
       - checkout
       - run:
@@ -26,9 +26,7 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
-      - codecov/upload:
-          file: 'target/site/jacoco/jacoco.xml'
-          token: CODECOV_TOKEN
+      - codecov/upload
 
 
 
