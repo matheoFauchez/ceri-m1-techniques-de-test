@@ -39,6 +39,7 @@ jobs:
       - checkout
       - codecov/upload:
           file: 'target/site/jacoco/jacoco.xml'
+          slug: CODECOV_TOKEN
 
 
   #deploy:
