@@ -3,7 +3,7 @@ version: 2.1
 name: CircleCI + CodeCov
 
 orbs:
-  codecov: codecov/codecov@4
+  codecov: codecov/codecov@4.0.1
 
 jobs:
   test-java:
@@ -26,7 +26,9 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
-      - codecov/upload
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml
+          token: CODECOV_TOKEN
 
 
 
