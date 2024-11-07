@@ -1,4 +1,4 @@
-version: 2.1
+version: '2.1'
 
 name: CircleCI + CodeCov
 
@@ -27,7 +27,7 @@ jobs:
           paths:
             - ~/.m2/repository
       - codecov/upload:
-          file: target/site/jacoco/jacoco.xml
+          file: 'target/site/jacoco/jacoco.xml'
           token: CODECOV_TOKEN
 
 
