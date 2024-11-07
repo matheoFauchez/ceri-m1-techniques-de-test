@@ -17,7 +17,8 @@ jobs:
       - image: maven:3.8.5-openjdk-11
     steps:
       - checkout
-      - codecov/upload
+      - codecov/upload:
+          file: ./target/site/jacoco/jacoco.xml
 
 workflows:
   version: 2
