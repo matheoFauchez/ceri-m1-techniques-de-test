@@ -6,8 +6,8 @@
     <groupId>fr.univavignon</groupId>
     <artifactId>ceri-m1-techniques-de-test</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>CERI M1 Techniques de Test</name>
-    <description>Projet pour l'apprentissage des techniques de test d'API.</description>
+    <name>ceri-m1-techniques-de-test</name>
+    <description>ceri-m1-techniques-de-test</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
