@@ -20,14 +20,13 @@ jobs:
 #          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           command: mvn verify
-      - store_test_results:
-          path: target/surefire-reports
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-          paths:
-            - ~/.m2/repository
-      - codecov/upload:
-          slug: 'matheoFauchez/ceri-m1-techniques-de-test'
+#      - store_test_results:
+#          path: target/surefire-reports
+#      - save_cache:
+#          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+#          paths:
+#            - ~/.m2/repository
+      - codecov/upload
 
 
 
