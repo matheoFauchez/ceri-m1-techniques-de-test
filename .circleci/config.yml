@@ -39,18 +39,18 @@ jobs:
   #    - codecov/upload
 
 
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+  #deploy:
+  #  docker:
+  #    - image: cimg/base:stable
+  #  steps:
+  #    - run:
+  #        name: deploy
+  #        command: '#e.g. ./deploy.sh'
 
 workflows:
   build-test-and-codecov:
     jobs:
       - test-java
-      - codecov-upload:
+      - codecov/upload:
           requires:
             - test-java
