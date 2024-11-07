@@ -20,8 +20,8 @@ jobs:
 #          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           command: mvn verify
-      - store_test_results:
-          path: target/surefire-reports
+#      - store_test_results:
+#          path: target/surefire-reports
 #      - save_cache:
 #          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
 #          paths:
@@ -47,7 +47,7 @@ jobs:
   #        name: deploy
   #        command: '#e.g. ./deploy.sh'
 
-workflows:
+workflow:
   version: 2
   build-test-and-codecov:
     jobs:
