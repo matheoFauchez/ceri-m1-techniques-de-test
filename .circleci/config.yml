@@ -27,7 +27,8 @@ jobs:
           paths:
             - ~/.m2/repository
       - run : mvn jacoco:report
-      - codecov/upload
+      - codecov/upload:
+          token: CODECOV_TOKEN
 #      - run:
 #          name: Upload coverage to Codecov
 #          command: |-
