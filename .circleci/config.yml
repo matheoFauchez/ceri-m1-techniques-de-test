@@ -28,6 +28,7 @@ jobs:
             - ~/.m2/repository
       - run : mvn jacoco:report
       - codecov/upload:
+          file: target/site/jacoco/jacoco.xml
           token: CODECOV_TOKEN
 #      - run:
 #          name: Upload coverage to Codecov
@@ -45,7 +46,7 @@ jobs:
   #        name: deploy
   #        command: '#e.g. ./deploy.sh'
 
-workflows:
+workflow:
   build-test-and-codecov:
     jobs:
       - test-java
