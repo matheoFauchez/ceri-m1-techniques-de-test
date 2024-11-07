@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@4.0.1
+  codecov: codecov/codecov@4.2.0
 
 jobs:
   build:
@@ -47,8 +47,7 @@ jobs:
   #        name: deploy
   #        command: '#e.g. ./deploy.sh'
 
-workflow:
-  version: 2
+workflows:
   build-test-and-codecov:
     jobs:
       - build
