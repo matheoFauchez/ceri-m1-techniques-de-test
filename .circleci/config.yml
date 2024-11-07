@@ -3,12 +3,12 @@ version: 2.1
 name: CircleCI + CodeCov
 
 orbs:
-  codecov: codecov/codecov@3
+  codecov: codecov/codecov@4
 
 jobs:
   test-java:
     docker:
-      - image: maven:3.8.5-openjdk-11
+      - image: cimg/openjdk-17
     steps:
       - checkout
       - run:
