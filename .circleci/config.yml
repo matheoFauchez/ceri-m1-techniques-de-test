@@ -33,11 +33,11 @@ jobs:
       - run:
           name: Run tests and collect coverage
           command: mvn -B test
-#      - codecov/upload
-      - run:
-          name: Upload coverage to Codecov
-          command: |-
-            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -s matheoFauchez/ceri-m1-techniques-de-test
+      - codecov/upload
+#      - run:
+#          name: Upload coverage to Codecov
+#          command: |-
+#            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -s matheoFauchez/ceri-m1-techniques-de-test
 
 workflows:
   build-test-and-codecov:
