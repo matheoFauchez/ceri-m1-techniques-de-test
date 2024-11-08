@@ -33,6 +33,7 @@ jobs:
       - run:
           name: Run tests and collect coverage
           command: mvn -B test
+      - codecov/debug
       - codecov/upload
 #      - run:
 #          name: Upload coverage to Codecov
