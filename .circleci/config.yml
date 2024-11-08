@@ -34,7 +34,7 @@ jobs:
           name: Run tests and collect coverage
           command: mvn -B test
       - run: echo $CIRCLE_PROJECT_REPONAME
-      - run: $CIRCLE_PROJECT_REPONAME=ceri-m1-techniques-de-test
+      - run: $CIRCLE_PROJECT_REPONAME='ceri-m1-techniques-de-test'
       - run: $CIRCLE_PROJECT_REPONAME
       - codecov/upload
 #      - run:
