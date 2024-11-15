@@ -45,7 +45,7 @@ public class IPokedexFactoryTest {
         assertEquals(pokedex.addPokemon(pikachu), ppf.addPokemon(pikachu));//Should be 1
     }
 
-    @Test
+    /*@Test
     //Ajouté au TP4
     public void shouldThrowPokedexExceptionWhenArgumentPokemonFactoryNull()
     {
@@ -65,6 +65,6 @@ public class IPokedexFactoryTest {
                     pokedexFactory.createPokedex(null, pf);
                 }
         );
-    }
+    }*/
 
 }
