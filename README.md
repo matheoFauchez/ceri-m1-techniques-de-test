@@ -4,6 +4,68 @@ Mathéo FAUCHEZ ILSEN ALTERNANT
 
 [![codecov](https://codecov.io/gh/matheoFauchez/ceri-m1-techniques-de-test/graph/badge.svg?token=6VDI8F05M3)](https://codecov.io/gh/matheoFauchez/ceri-m1-techniques-de-test)
 
+## Un peu de documentation sur l'implementation
+
+Etant donné que nous travaillons en TDD (Test Driven Development) les tests ont été mis en place avant l'implémentation,
+je vais donc suivre ce que j'ai défini dans mes classes de tests, mais il peut y avoir des changements (dans les tests et implémentations)
+si je le juge nécessaire (ajout de cas d'erreurs par exemple)
+
+### Pokedex
+
+Cette classe nous servira a gerer notre pokedex, elle stockera tout les pokémons capturés par un dresseur (PokemonTrainer)
+Son implémentation suivra l'interface et les tests existants
+On aura donc :
+
+#### size
+
+Renvoie la taille de notre pokedex (nombre de pokémons inscrits dedans)
+
+#### addPokemon
+
+Ajoute un pokemon dans notre pokedex, renverra une erreur si le pokémon est deja dans le pokedex
+
+#### getPokemon
+
+Renvoie un pokemon du pokedex a partir d'un id passé en parametre, renvoie une erreur si l'id du pokemon est inconnu dans le pokedex
+
+#### getPokemons
+
+Renvoie une liste de tout les pokemons inscrits dans le pokedex
+
+#### getPokemons(Comparator<Pokemon> order)
+
+Renvoie une liste de tout les pokemons inscrits dans le pokedex triée par id, nom ou cp (points de combat)
+
+### PokedexFactory
+
+Cette classe nous servira a créer des pokedex
+
+### PokemonFactory
+
+### PokemonMetadataProvider
+
+Cette classe nous servira a récuperer les metadata d'un pokemon a partir de son id
+
+#### getPokemonMetadata
+
+Cette méthode renvoie les PokemonMetadata d'un pokemon a partir de son id,
+les PokemonMetadata étant les statistiques de base commune a tout les pokemons d'une espece (par exemple tout les pikachu)
+Doit renvoyer une erreur si 
+
+### PokemonTrainerFactory
+
+Cette classe nous servira a créer des dresseurs pokemons(PokemonTrainer)
+
+#### createTrainer
+
+Cette méthode nous renvoie un dresseur pokemon (PokemonTrainer) qu'elle vient de créer,
+elle prend en parametre 3 elements :
+- name : le nom du dresseur
+- team : l'equipe du dresseur (Team etant un enum)
+- pokedexFactory : une factory de pokedex pour pouvoir lui creer un pokedex
+
+# README ORIGINAL :
+
 # UCE Génie Logiciel Avancé : Techniques de tests
 
 ## Introduction
