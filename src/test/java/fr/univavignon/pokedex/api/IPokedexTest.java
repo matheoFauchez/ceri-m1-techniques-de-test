@@ -2,13 +2,11 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 public class IPokedexTest {
@@ -63,6 +61,7 @@ public class IPokedexTest {
     @Test
     public void shouldThrowPokedexException_WhenGetPokemon26()
     {
+        pokedex.addPokemon(bulbizarre);
         assertThrows(PokedexException.class, () -> {
            pokedex.getPokemon(26);
            //verify(pokedex, times(1)).getPokemon(26);
@@ -99,5 +98,25 @@ public class IPokedexTest {
     {
         assertEquals(pokemons, pokedex.getPokemons(PokemonComparators.INDEX));
         //verify(pokedex, times(1)).getPokemons(PokemonComparators.INDEX);
+    }
+
+    @Test
+    public void shouldReturnPokemonBulbizarreWhenCreated()
+    {
+        assertEquals(bulbizarre.getName(), pokedex.createPokemon(0, 1,2,3,4).getName());
+    }
+
+    @Test
+    public void shouldReturnPokemonMetadataBulbizarreWhenGetMetadata() throws PokedexException {
+        assertEquals(bulbizarre.getName(), pokedex.getPokemonMetadata(0).getName());
+    }
+
+    @Test
+    public void shouldThrowPokedexExceptionWhenGetMetadata25()
+    {
+        assertThrows(PokedexException.class, ()->
+        {
+           pokedex.getPokemonMetadata(25);
+        });
     }
 }

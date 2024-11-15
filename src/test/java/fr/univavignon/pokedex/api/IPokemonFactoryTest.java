@@ -2,11 +2,9 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
 
 public class IPokemonFactoryTest
 {
@@ -40,26 +38,32 @@ public class IPokemonFactoryTest
     @Test
     public void returnedPokemonShouldHaveAttackDefenseAndStaminaBetween0And15() throws PokedexException
     {
-        Pokemon pokemonTest = pokemonFactory.createPokemon(0,613,64,4000,4);
-        PokemonMetadata pokemonTestSpecsEspece = pokemonMetadataProvider.getPokemonMetadata(0);
-        assertTrue("L'attaque de l'individu doit être comprise entre 0 et 15", pokemonTest.getAttack()-pokemonTestSpecsEspece.getAttack()>=0 || pokemonTest.getAttack()-pokemonTestSpecsEspece.getAttack()<=15);
-        assertTrue("La défense de l'individu doit être comprise entre 0 et 15", pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense()>=0 || pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense()<=15);
-        assertTrue("L'endurance de l'individu doit être comprise entre 0 et 15", pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina()>=0 || pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina()<=15);
+        Pokemon Pokemon = pokemonFactory.createPokemon(0,613,64,4000,4);
+        PokemonMetadata PokemonSpecsEspece = pokemonMetadataProvider.getPokemonMetadata(0);
+        assertTrue("L'attaque de l'individu doit être comprise entre 0 et 15", Pokemon.getAttack()-PokemonSpecsEspece.getAttack()>=0 || Pokemon.getAttack()-PokemonSpecsEspece.getAttack()<=15);
+        assertTrue("La défense de l'individu doit être comprise entre 0 et 15", Pokemon.getDefense()-PokemonSpecsEspece.getDefense()>=0 || Pokemon.getDefense()-PokemonSpecsEspece.getDefense()<=15);
+        assertTrue("L'endurance de l'individu doit être comprise entre 0 et 15", Pokemon.getStamina()-PokemonSpecsEspece.getStamina()>=0 || Pokemon.getStamina()-PokemonSpecsEspece.getStamina()<=15);
     }
 
     @Test
     public void checkIfTheIvHasBennCorrectlyCalculated() throws PokedexException {
-        Pokemon pokemonTest = pokemonFactory.createPokemon(0,613,64,4000,4);
-        PokemonMetadata pokemonTestSpecsEspece = pokemonMetadataProvider.getPokemonMetadata(0);
-        int pokemonTestAttack = pokemonTest.getAttack()-pokemonTestSpecsEspece.getAttack();
-        int pokemonTestDefense = pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense();
-        int pokemonTestStamina = pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina();
-        //int pokemonTestIv = (int)(pokemonTest.getIv()/100)*15;
-        /*assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", pokemonTestAttack==pokemonTestIv);
-        assertTrue("Le pourcentage d'iv pour la defense a mal été calculé", pokemonTestDefense==pokemonTestIv);
-        assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", pokemonTestStamina==pokemonTestIv);*/
-        double ivCalcule = (double) (pokemonTestAttack + pokemonTestDefense + pokemonTestStamina) /45;
-        assertTrue("Le pourcentage de perfection est mal calculé", ivCalcule==pokemonTest.getIv());
+        Pokemon Pokemon = pokemonFactory.createPokemon(0,613,64,4000,4);
+        PokemonMetadata PokemonSpecsEspece = pokemonMetadataProvider.getPokemonMetadata(0);
+        int PokemonAttack = Pokemon.getAttack()-PokemonSpecsEspece.getAttack();
+        int PokemonDefense = Pokemon.getDefense()-PokemonSpecsEspece.getDefense();
+        int PokemonStamina = Pokemon.getStamina()-PokemonSpecsEspece.getStamina();
+        //int PokemonIv = (int)(Pokemon.getIv()/100)*15;
+        /*assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", PokemonAttack==PokemonIv);
+        assertTrue("Le pourcentage d'iv pour la defense a mal été calculé", PokemonDefense==PokemonIv);
+        assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", PokemonStamina==PokemonIv);*/
+        double ivCalcule = (double) (PokemonAttack + PokemonDefense + PokemonStamina) /45;
+        assertTrue("Le pourcentage de perfection est mal calculé", ivCalcule==Pokemon.getIv());
+    }
+
+    @Test
+    public void shouldThrowPokedexExceptionWhenTryToCreatePokemonNotInList()
+    {
+        Pokemon pokemon = pokemonFactory.createPokemon(255, 1, 2, 3, 4);
     }
 
 }

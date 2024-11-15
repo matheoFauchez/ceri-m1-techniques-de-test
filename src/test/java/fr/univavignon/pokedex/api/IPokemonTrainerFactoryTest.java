@@ -31,7 +31,10 @@ public class IPokemonTrainerFactoryTest {
     @Test
     public void shouldReturnSacha_WhenPokemonTrainerFactoryCreateTrainer_Sacha_team_pf()
     {
-        assertEquals(sacha.getName(), ptf.createTrainer("Sacha", team, pf).getName());
+        PokemonTrainer toTest=ptf.createTrainer("Sacha", team, pf);
+        assertEquals(sacha.getName(), toTest.getName());
+        assertEquals(sacha.getPokedex().size(), toTest.getPokedex().size());
+        assertEquals(sacha.getTeam(), toTest.getTeam());
         //verify(ptf, times(1)).createTrainer("Sacha", team, pf);
     }
 
