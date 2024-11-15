@@ -5,20 +5,14 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory{
     public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
         try
         {
-            PokemonMetadataProvider pmp = new PokemonMetadataProvider();
-            PokemonFactory pf = new PokemonFactory();
-            IPokedex pokedex = pokedexFactory.createPokedex(pmp, pf);
+            IPokedex pokedex = pokedexFactory.createPokedex(new PokemonMetadataProvider(), new PokemonFactory());
             return new PokemonTrainer(name, team, pokedex);
         }
-        catch (PokedexException pe)
+        catch (PokedexException p)
         {
-            pe.printStackTrace();
+            p.printStackTrace();
             return null;
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
+
     }
 }

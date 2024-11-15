@@ -49,11 +49,22 @@ public class IPokedexFactoryTest {
 
     @Test
     //Ajouté au TP4
-    public void shouldThrowPokedexExceptionWhenArgumentNull()
+    public void shouldThrowPokedexExceptionWhenArgumentPokemonFactoryNull()
     {
         assertThrows(
                 PokedexException.class, ()->{
                     pokedexFactory.createPokedex(pmp, null);
+                }
+        );
+    }
+
+    @Test
+    //Ajouté au TP4
+    public void shouldThrowPokedexExceptionWhenArgumentMetadataNull()
+    {
+        assertThrows(
+                PokedexException.class, ()->{
+                    pokedexFactory.createPokedex(null, pf);
                 }
         );
     }
