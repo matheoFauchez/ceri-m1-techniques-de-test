@@ -19,22 +19,22 @@ public class IPokemonFactoryTest
     public void initialiseVariables() throws PokedexException {
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613,64,4000,4,56);
 
-        pokemonFactory=Mockito.mock(IPokemonFactory.class);
-        when(pokemonFactory.createPokemon(0,613,64,4000,4)).thenReturn(bulbizarre);
+        pokemonFactory = new PokemonFactory();
+        /*pokemonFactory=Mockito.mock(IPokemonFactory.class);
+        when(pokemonFactory.createPokemon(0,613,64,4000,4)).thenReturn(bulbizarre);*/
 
         pokemonMetadata = new PokemonMetadata(0, "Bulbizare", 126, 126, 90);
 
-        pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-        when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(pokemonMetadata);
+        pokemonMetadataProvider = new PokemonMetadataProvider();
+        /*pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
+        when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(pokemonMetadata);*/
     }
 
-    /*@Test
+    @Test
     public void shouldReturnBulbizarre_WhenCreatePokemon_0_613_64_4000_4()
     {
-        Pokemon test;
-        assertEquals(bulbizarre, test=pokemonFactory.createPokemon(0,613,64,4000,4));
-        verify(pokemonFactory, times(1)).createPokemon(0,613,64,4000,4);
-
+        assertEquals(bulbizarre.getName(), pokemonFactory.createPokemon(0,613,64,4000,4).getName());
+        //verify(pokemonFactory, times(1)).createPokemon(0,613,64,4000,4);
     }
 
     @Test
@@ -54,10 +54,12 @@ public class IPokemonFactoryTest
         int pokemonTestAttack = pokemonTest.getAttack()-pokemonTestSpecsEspece.getAttack();
         int pokemonTestDefense = pokemonTest.getDefense()-pokemonTestSpecsEspece.getDefense();
         int pokemonTestStamina = pokemonTest.getStamina()-pokemonTestSpecsEspece.getStamina();
-        int pokemonTestIv = (int)(pokemonTest.getIv()/100)*15;
-        assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", pokemonTestAttack==pokemonTestIv);
+        //int pokemonTestIv = (int)(pokemonTest.getIv()/100)*15;
+        /*assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", pokemonTestAttack==pokemonTestIv);
         assertTrue("Le pourcentage d'iv pour la defense a mal été calculé", pokemonTestDefense==pokemonTestIv);
-        assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", pokemonTestStamina==pokemonTestIv);
-    }*/
+        assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", pokemonTestStamina==pokemonTestIv);*/
+        double ivCalcule = (double) (pokemonTestAttack + pokemonTestDefense + pokemonTestStamina) /45;
+        assertTrue("Le pourcentage de perfection est mal calculé", ivCalcule==pokemonTest.getIv());
+    }
 
 }

@@ -36,6 +36,7 @@ public class IPokedexTest {
         pf = new PokemonFactory();
         pmp = new PokemonMetadataProvider();
         pokedex = new Pokedex(pmp, pf);
+        pokemons = new ArrayList<Pokemon>();
     }
 
     @Test
@@ -86,7 +87,6 @@ public class IPokedexTest {
         });
     }
 
-    /*
     @Test
     public void shouldReturnPokemons_WhenGetPokemons()
     {
@@ -100,6 +100,4 @@ public class IPokedexTest {
         assertEquals(pokemons, pokedex.getPokemons(PokemonComparators.INDEX));
         //verify(pokedex, times(1)).getPokemons(PokemonComparators.INDEX);
     }
-    */
-
 }

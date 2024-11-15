@@ -19,38 +19,39 @@ public class IPokemonMetadataProviderTest {
      * Create a mock for the getPokemon
      */
     @Before
-    public void initialisationPikachu() throws PokedexException {
-        pikachuMetadata = new PokemonMetadata(25, "Pikachu", 2, 3, 1);
+    public void initialisation() throws PokedexException {
+        pikachuMetadata = new PokemonMetadata(0, "Pikachu", 2, 3, 1);
 
-        pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
+        /*pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
         Mockito.when(pokemonMetadataProvider.getPokemonMetadata(25)).thenReturn(pikachuMetadata);
 
-        Mockito.when(pokemonMetadataProvider.getPokemonMetadata(26)).thenThrow(new PokedexException("Erreur pokemon inexistant"));
+        Mockito.when(pokemonMetadataProvider.getPokemonMetadata(26)).thenThrow(new PokedexException("Erreur pokemon inexistant"));*/
+        pokemonMetadataProvider = new PokemonMetadataProvider();
     }
 
     /**
      * Try to get the pikachu metadata when trying 25 in getPokemonMetadata of mocked object pokemonMetadataProvider
      * @throws PokedexException
      */
-    /*@Test
-    public void shouldReturnPikachuMetadata_When25Index() throws PokedexException
+    @Test
+    public void shouldReturnPikachuMetadata_When0Index() throws PokedexException
     {
-        assertEquals(pikachuMetadata, pokemonMetadataProvider.getPokemonMetadata(25));
-        verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(25);
-    }*/
+        assertEquals(pikachuMetadata.getIndex(), pokemonMetadataProvider.getPokemonMetadata(0).getIndex());
+        //verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(25);
+    }
 
     /**
      * Try to get the PokedexException when trying to get the pokemon with the index=26
      */
-    /*@Test
+    @Test
     public void shouldReturnPokedexException_When26Index()
     {
         assertThrows(PokedexException.class, () ->
         {
             pokemonMetadataProvider.getPokemonMetadata(26);
-            verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(26);
+            //verify(pokemonMetadataProvider, times(1)).getPokemonMetadata(26);
         });
-    }*/
+    }
 
 
 }

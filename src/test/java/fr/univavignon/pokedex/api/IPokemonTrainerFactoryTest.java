@@ -16,22 +16,23 @@ public class IPokemonTrainerFactoryTest {
     IPokemonTrainerFactory ptf;
 
     @Before
-    public void initialiseVariables()
-    {
+    public void initialiseVariables() throws PokedexException {
         team = Team.VALOR;
-        pf = Mockito.mock(IPokedexFactory.class);
-        ptf = Mockito.mock(IPokemonTrainerFactory.class);
+        /*pf = Mockito.mock(IPokedexFactory.class);
+        ptf = Mockito.mock(IPokemonTrainerFactory.class);*/
+        pf = new PokedexFactory();
+        ptf = new PokemonTrainerFactory();
 
-        sacha=new PokemonTrainer("Sacha", team, Mockito.mock(IPokedex.class));
+        sacha=new PokemonTrainer("Sacha", team, pf.createPokedex(new PokemonMetadataProvider(), new PokemonFactory()));
 
-        Mockito.when(ptf.createTrainer("Sacha", team, pf)).thenReturn(sacha);
+        //Mockito.when(ptf.createTrainer("Sacha", team, pf)).thenReturn(sacha);
     }
 
-    /*@Test
+    @Test
     public void shouldReturnSacha_WhenPokemonTrainerFactoryCreateTrainer_Sacha_team_pf()
     {
-        assertEquals(sacha, ptf.createTrainer("Sacha", team, pf));
-        verify(ptf, times(1)).createTrainer("Sacha", team, pf);
-    }*/
+        assertEquals(sacha.getName(), ptf.createTrainer("Sacha", team, pf).getName());
+        //verify(ptf, times(1)).createTrainer("Sacha", team, pf);
+    }
 
 }
