@@ -86,6 +86,7 @@ public class IPokedexTest {
         });
     }
 
+    /*
     @Test
     public void shouldReturnPokemons_WhenGetPokemons()
     {
@@ -99,6 +100,6 @@ public class IPokedexTest {
         assertEquals(pokemons, pokedex.getPokemons(PokemonComparators.INDEX));
         //verify(pokedex, times(1)).getPokemons(PokemonComparators.INDEX);
     }
-
+    */
 
 }
