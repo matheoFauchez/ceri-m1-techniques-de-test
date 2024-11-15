@@ -1,5 +1,9 @@
 Mathéo FAUCHEZ ILSEN ALTERNANT
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/main)
+
+[![codecov](https://codecov.io/gh/matheoFauchez/ceri-m1-techniques-de-test/graph/badge.svg?token=6VDI8F05M3)](https://codecov.io/gh/matheoFauchez/ceri-m1-techniques-de-test)
+
 # UCE Génie Logiciel Avancé : Techniques de tests
 
 ## Introduction
