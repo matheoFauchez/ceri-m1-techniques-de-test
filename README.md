@@ -40,11 +40,21 @@ Renvoie une liste de tout les pokemons inscrits dans le pokedex triée par id, n
 
 Cette classe nous servira a créer des pokedex
 
+#### createPokedex
+
+Créée et renvoie un pokedex, si un des paramatres est null alors renvoie une PokedexException
+
 ### PokemonFactory
+
+#### createPokemon
+
+Permet de créer un pokemon, récupere ses metadata d'espece (données communes a tout les bulbizarres par exemple) et attribue des nombres aleatoires entre 0 et 15
+a l'attaque, défense et l'endurance. Puis calcule l'indice de perfection en additionnant ces 3 valeurs et en divisant la somme par 45 pour obtenir un pourcentage de perfection
 
 ### PokemonMetadataProvider
 
 Cette classe nous servira a récuperer les metadata d'un pokemon a partir de son id
+Elle stocke egalement les metadata de toutes les especes de pokemons differentes
 
 #### getPokemonMetadata
 
@@ -63,6 +73,10 @@ elle prend en parametre 3 elements :
 - name : le nom du dresseur
 - team : l'equipe du dresseur (Team etant un enum)
 - pokedexFactory : une factory de pokedex pour pouvoir lui creer un pokedex
+
+## Ajout d'une classe
+### PokemonTest
+J'ai ajouté cette classe de test afin de tester la classe Pokemon et d'avoir un meilleur pourcentage de couverture de code
 
 # README ORIGINAL :
 
