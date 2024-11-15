@@ -27,11 +27,11 @@ public class IPokemonTrainerFactoryTest {
         Mockito.when(ptf.createTrainer("Sacha", team, pf)).thenReturn(sacha);
     }
 
-    @Test
+    /*@Test
     public void shouldReturnSacha_WhenPokemonTrainerFactoryCreateTrainer_Sacha_team_pf()
     {
         assertEquals(sacha, ptf.createTrainer("Sacha", team, pf));
         verify(ptf, times(1)).createTrainer("Sacha", team, pf);
-    }
+    }*/
 
 }

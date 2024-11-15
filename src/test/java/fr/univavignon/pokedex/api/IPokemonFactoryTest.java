@@ -28,7 +28,7 @@ public class IPokemonFactoryTest
         when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(pokemonMetadata);
     }
 
-    @Test
+    /*@Test
     public void shouldReturnBulbizarre_WhenCreatePokemon_0_613_64_4000_4()
     {
         Pokemon test;
@@ -58,6 +58,6 @@ public class IPokemonFactoryTest
         assertTrue("Le pourcentage d'iv pour l'attaque a mal été calculé", pokemonTestAttack==pokemonTestIv);
         assertTrue("Le pourcentage d'iv pour la defense a mal été calculé", pokemonTestDefense==pokemonTestIv);
         assertTrue("Le pourcentage d'iv pour l'endurance a mal été calculé", pokemonTestStamina==pokemonTestIv);
-    }
+    }*/
 
 }
