@@ -15,6 +15,6 @@ public interface IPokedexFactory {
 	 * @param pokemonFactory Pokemon factory the created pokedex will use.
 	 * @return Created pokedex instance.
 	 */
-	IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) throws PokedexException;
+	IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory);
 	
 }
