@@ -1,6 +1,6 @@
 Mathéo FAUCHEZ ILSEN ALTERNANT
 
-[BaliseCheckstyle]
+![Checkstyle Violations](https://img.shields.io/badge/Checkstyle%20Violations-$(curl -s https://example.com/checkstyle-violations.json | jq .violations)-Violations-orange)
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master)
 

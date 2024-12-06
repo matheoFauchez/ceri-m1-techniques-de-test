@@ -43,29 +43,15 @@ jobs:
             mvn checkstyle:checkstyle
 
       - run:
-          name: Badge checkstyle
+          name: Count Checkstyle Violations and Create JSON
           command: |-
-            if [ "$violations" -eq 0 ]; then
-            badge_color="green"
-            elif [ "$violations" -lt 100 ]; then
-            badge_color="orange"
-            else
-            badge_color="red"
-            fi
-            
-            badge_url="https://img.shields.io/badge/Checkstyle-$violations%20Violations-$badge_color"
-            
-            sed -i 's/\[BaliseCheckstyle\]/$badge_url/' README.md
+            violations=$(grep -o '<file.*violations="[0-9]*"' target/checkstyle-result.xml | \
+                        sed 's/.*violations="\([0-9]*\)".*/\1/' | \
+                        awk '{s+=$1} END {print s}')
+            echo "Violations: $violations"
 
-      - run:
-          name: Commit README.md with updated badge
-          command: |-
-            git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
-            git config --global user.name "matheoFauchez"
-            git add README.md
-            git commit -m "Update Checkstyle badge"
-            git push origin HEAD:main
-
+            # Create a JSON file with the violations count
+            echo "{\"violations\": $violations}" > checkstyle-violations.json
 
 workflows:
   build-test-and-codecov:
