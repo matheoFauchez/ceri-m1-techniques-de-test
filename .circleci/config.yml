@@ -59,7 +59,7 @@ jobs:
             
             badge_url="https://img.shields.io/badge/Checkstyle-$violations%20Violations-$badge_color"
             
-            sed -i 's/[BaliseCheckstyle]/$badge_url/' README.md
+            sed -i 's/\[BaliseCheckstyle\]/$badge_url/' README.md
             #echo "Badge URL: $badge_url"
 
 workflows:
