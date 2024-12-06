@@ -46,6 +46,22 @@ jobs:
           command: |-
             mvn checkstyle:checkstyle
 
+      - run:
+          name: Badge checkstyle
+          command: |-
+            if [ "$violations" -eq 0 ]; then
+            badge_color="green"
+            elif [ "$violations" -lt 100 ]; then
+            badge_color="orange"
+            else
+            badge_color="red"
+            fi
+            
+            badge_url="https://img.shields.io/badge/Checkstyle-$violations%20Violations-$badge_color"
+            
+            sed -i 's/[BaliseCheckstyle]/$badge_url/' README.md
+            #echo "Badge URL: $badge_url"
+
 workflows:
   build-test-and-codecov:
     jobs:
