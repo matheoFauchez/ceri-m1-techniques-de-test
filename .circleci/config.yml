@@ -42,17 +42,6 @@ jobs:
           command: |-
             mvn checkstyle:checkstyle
 
-      - run:
-          name: Count Checkstyle Violations and Create JSON
-          command: |-
-            violations=$(grep -o '<file.*violations="[0-9]*"' target/checkstyle-result.xml | \
-                        sed 's/.*violations="\([0-9]*\)".*/\1/' | \
-                        awk '{s+=$1} END {print s}')
-            echo "Violations: $violations"
-
-            # Create a JSON file with the violations count
-            echo "{\"violations\": $violations}" > checkstyle-violations.json
-
 workflows:
   build-test-and-codecov:
     jobs:
