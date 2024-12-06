@@ -8,7 +8,7 @@ import java.util.List;
  * captured pokemon, as their default metadata as well.
  * @author fv
  */
-public interface IPokedex extends IPokemonMetadataProvider, IPokemonFactory {
+public interface IPokedex extends IPokemonMetadataProvider,IPokemonFactory{
 	/**
 	 * Returns the number of pokemon this pokedex contains.
 	 * 
