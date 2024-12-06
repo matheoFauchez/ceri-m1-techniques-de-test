@@ -8,19 +8,18 @@ import java.util.List;
  * captured pokemon, as their default metadata as well.
  * @author fv
  */
-public interface IPokedex extends IPokemonMetadataProvider,IPokemonFactory{
+public interface IPokedex extends IPokemonMetadataProvider, IPokemonFactory {
 	/**
-	 * Returns the number of pokemon this pokedex contains.
-	 * 
-	 * @return Number of pokemon in this pokedex.
-	 */
+	* Returns the number of pokemon this pokedex contains.
+	* @return Number of pokemon in this pokedex.
+	*/
 	int size();
 	/**
-	 * Adds the given <tt>pokemon</tt> to this pokedex and returns
-	 * it unique index.
-	 * @param pokemon Pokemon to add to this pokedex.
-	 * @return Index of this pokemon relative to this pokedex.
-	 */
+	* Adds the given <tt>pokemon</tt> to this pokedex and returns
+	* it unique index.
+	* @param pokemon Pokemon to add to this pokedex.
+	* @return Index of this pokemon relative to this pokedex.
+	*/
 	int addPokemon(Pokemon pokemon);
 	/**
 	 * Locates the pokemon identified by the given <tt>id</tt>.
