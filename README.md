@@ -1,6 +1,6 @@
 Mathéo FAUCHEZ ILSEN ALTERNANT
 
-[BaliseCheckstyle]
+$badge_url
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master)
 
