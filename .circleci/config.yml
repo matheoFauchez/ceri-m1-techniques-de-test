@@ -60,8 +60,8 @@ jobs:
       - run:
           name: Commit README.md with updated badge
           command: |-
-            git config --global user.email "ci@example.com"
-            git config --global user.name "CircleCI"
+            git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
+            git config --global user.name "matheoFauchez"
             git add README.md
             git commit -m "Update Checkstyle badge"
             git push origin HEAD:main
