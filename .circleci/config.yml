@@ -41,6 +41,8 @@ jobs:
           name: Checkstyle
           command: |-
             mvn checkstyle:checkstyle
+            $nb_violations = grep -o "<error" checkstyle-result.xml | wc -l
+            echo $nb_violations
 
 workflows:
   build-test-and-codecov:
