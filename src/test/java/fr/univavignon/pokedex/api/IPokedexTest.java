@@ -101,8 +101,7 @@ public class IPokedexTest {
     }
 
     @Test
-    public void shouldReturnPokemonBulbizarreWhenCreated()
-    {
+    public void shouldReturnPokemonBulbizarreWhenCreated() throws PokedexException {
         assertEquals(bulbizarre.getName(), pokedex.createPokemon(0, 1,2,3,4).getName());
     }
 

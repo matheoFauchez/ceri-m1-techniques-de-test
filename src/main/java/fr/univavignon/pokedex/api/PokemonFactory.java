@@ -11,22 +11,14 @@ public class PokemonFactory implements IPokemonFactory{
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        try
-        {
-            PokemonMetadata pm = pmp.getPokemonMetadata(index);
-            Random rdm = new Random();
-            int ivAttack = rdm.nextInt(16);
-            int ivDefense = rdm.nextInt(16);
-            int ivStamina = rdm.nextInt(16);
-            double iv = (double) (ivAttack + ivDefense + ivStamina) /45;
-            return new Pokemon(index, pm.getName(), pm.getAttack()+ivAttack, pm.getDefense()+ivDefense,
-                        pm.getStamina()+ivStamina, cp, hp, dust, candy, iv);
-        }
-        catch (PokedexException p)
-        {
-            p.printStackTrace();
-            return null;
-        }
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
+        PokemonMetadata pm = pmp.getPokemonMetadata(index);
+        Random rdm = new Random();
+        int ivAttack = rdm.nextInt(16);
+        int ivDefense = rdm.nextInt(16);
+        int ivStamina = rdm.nextInt(16);
+        double iv = (double) (ivAttack + ivDefense + ivStamina) /45;
+        return new Pokemon(index, pm.getName(), pm.getAttack()+ivAttack, pm.getDefense()+ivDefense,
+                    pm.getStamina()+ivStamina, cp, hp, dust, candy, iv);
     }
 }
