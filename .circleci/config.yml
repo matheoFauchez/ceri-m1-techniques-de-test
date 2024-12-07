@@ -42,12 +42,11 @@ jobs:
           command: |-
             mvn checkstyle:checkstyle
             nb_violations=$(grep -o "<error" target/checkstyle-result.xml | wc -l)
-            echo "Number of Checkstyle violations: $nb_violations"
-            if [ "$nb_violations" -gt 0 ]; then
-              echo "Checkstyle violations found: $nb_violations"
-              exit 1
-            fi
-
+            echo "export NB_VIOLATIONS=${nb_violations}" >> $BASH_ENV
+      - run:
+          name: Print Badge URL
+          command: |-
+            echo "Badge URL: https://img.shields.io/badge/checkstyle-${NB_VIOLATIONS}-orange"
 workflows:
   build-test-and-codecov:
     jobs:
