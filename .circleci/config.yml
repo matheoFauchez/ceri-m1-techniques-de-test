@@ -41,8 +41,12 @@ jobs:
           name: Checkstyle
           command: |-
             mvn checkstyle:checkstyle
-            $nb_violations = grep -o "<error" checkstyle-result.xml | wc -l
-            echo $nb_violations
+            nb_violations=$(grep -o "<error" target/checkstyle-result.xml | wc -l)
+            echo "Number of Checkstyle violations: $nb_violations"
+            if [ "$nb_violations" -gt 0 ]; then
+              echo "Checkstyle violations found: $nb_violations"
+              exit 1
+            fi
 
 workflows:
   build-test-and-codecov:
