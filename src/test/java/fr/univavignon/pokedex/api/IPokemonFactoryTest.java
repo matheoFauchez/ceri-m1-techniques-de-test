@@ -15,8 +15,8 @@ public class IPokemonFactoryTest {
     public void initialiseVariables() throws PokedexException {
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 
-        //pokemonFactory = new PokemonFactory();
-        pokemonFactory = new RocketPokemonFactory();
+        pokemonFactory = new PokemonFactory();
+        //pokemonFactory = new RocketPokemonFactory();
 
         pokemonMetadata = new PokemonMetadata(0, "Bulbizare", 126, 126, 90);
 
