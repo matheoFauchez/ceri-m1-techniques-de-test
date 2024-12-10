@@ -3,8 +3,7 @@ package fr.univavignon.pokedex.api;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class IPokemonFactoryTest
 {
@@ -29,8 +28,7 @@ public class IPokemonFactoryTest
     }
 
     @Test
-    public void shouldReturnBulbizarre_WhenCreatePokemon_0_613_64_4000_4()
-    {
+    public void shouldReturnBulbizarre_WhenCreatePokemon_0_613_64_4000_4() throws PokedexException {
         assertEquals(bulbizarre.getName(), pokemonFactory.createPokemon(0,613,64,4000,4).getName());
         //verify(pokemonFactory, times(1)).createPokemon(0,613,64,4000,4);
     }
@@ -63,7 +61,7 @@ public class IPokemonFactoryTest
     @Test
     public void shouldThrowPokedexExceptionWhenTryToCreatePokemonNotInList()
     {
-        Pokemon pokemon = pokemonFactory.createPokemon(255, 1, 2, 3, 4);
+        assertThrows(PokedexException.class, () -> pokemonFactory.createPokemon(255, 1, 2, 3, 4));
     }
 
 }
