@@ -37,9 +37,6 @@ jobs:
           name: Upload coverage to Codecov
           command: |-
             curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -r matheoFauchez/ceri-m1-techniques-de-test
-      #- run:
-      #    name: Debug README modification
-      #    command: cat README.md
 
       - run:
           name: Checkstyle
@@ -57,12 +54,14 @@ jobs:
 
             sed -i "s|.*Checkstyle.*|![Checkstyle]($badge_url)|" README.md
 
-            #cat README.md
-            
-            git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
-            git config --global user.name "matheoFauchez"
-            git commit -am "Update README avec Checkstyle badge [skip ci]"
-            git push
+            if git diff --cached --quiet; then
+              echo "No changes to commit for Checkstyle badge"
+            else
+              git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
+              git config --global user.name "matheoFauchez"
+              git commit -am "MàJ README.md avec badge checkstyle [skip ci]"
+              git push
+            fi
 
       - run:
           name: Generate Javadoc
