@@ -53,6 +53,8 @@ jobs:
 
             sed -i "s|\[Checkstyle\](.*)|![Checkstyle]($badge_url)|" README.md
             
+            git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
+            git config --global user.name "matheoFauchez"
             git commit -am "Update README avec Checkstyle badge [skip ci]"
             git push
 
