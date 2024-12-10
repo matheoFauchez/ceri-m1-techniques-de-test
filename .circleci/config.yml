@@ -41,7 +41,7 @@ jobs:
           name: Checkstyle
           command: |-
             mvn checkstyle:checkstyle
-            violations=$(xmllint --xpath "count(//file/error)" target/checkstyle-result.xml)
+            violations=$(grep -o "<error" target/checkstyle-result.xml | wc -l)
 
             if [ "$violations" -eq 0 ]; then
                 badge_url="https://img.shields.io/badge/checkstyle-${violations}-green"
