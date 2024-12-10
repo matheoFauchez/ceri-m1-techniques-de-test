@@ -41,6 +41,20 @@ jobs:
           name: Checkstyle
           command: |-
             mvn checkstyle:checkstyle
+            violations=$(xmllint --xpath "count(//file/error)" target/checkstyle-result.xml)
+
+            if [ "$violations" -eq 0 ]; then
+                badge_url="https://img.shields.io/badge/checkstyle-${violations}-green"
+            elif [ "$violations" -lt 100 ]; then
+                badge_url="https://img.shields.io/badge/checkstyle-${violations}-orange"
+            else
+                badge_url="https://img.shields.io/badge/checkstyle-${violations}-red"
+            fi
+
+            sed -i "s|!\\[Checkstyle\\](.*)|![Checkstyle]($badge_url)|" README.md
+            
+            git commit -am "Update README avec Checkstyle badge [skip ci]"
+            git push
 
 workflows:
   build-test-and-codecov:
