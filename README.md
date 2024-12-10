@@ -1,6 +1,6 @@
 Mathéo FAUCHEZ ILSEN ALTERNANT
 
-!![Checkstyle](https://img.shields.io/badge/checkstyle-1-orange)(https://img.shields.io/badge/checkstyle-176-red)
+![Checkstyle](https://img.shields.io/badge/checkstyle-1-orange)
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/DAjdGZBoVRXV9MrfLrs7v8/KQSxb7pmpKXr4eLRw7rrSZ/tree/master)
 
