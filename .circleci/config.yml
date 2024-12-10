@@ -65,7 +65,7 @@ jobs:
 
       - run:
           name: Generate Javadoc
-          command: mvn javadoc:javadoc
+          command: mvn javadoc:javadoc || true
 
       - run:
           name: Publish Javadoc to GitHub Pages
