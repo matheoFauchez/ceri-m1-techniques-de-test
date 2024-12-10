@@ -5,103 +5,148 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * IPokedex interface. An IPokedex aims to store all information about
- * captured pokemon, as their default metadata as well.
+ * IPokedex implementation. A Pokedex aims to store all information about
+ * captured pokemon, as well as their default metadata.
+ *
  * @author fv
  */
 public class Pokedex implements IPokedex {
-    private IPokemonMetadataProvider pmp;
-    private IPokemonFactory pf;
+
+    /**
+     * PokemonMetadataProvider used to retrieve metadata for each pokemon.
+     */
+    private IPokemonMetadataProvider metadataProvider;
+
+    /**
+     * PokemonFactory used to create new pokemon instances.
+     */
+    private IPokemonFactory pokemonFactory;
+
+    /**
+     * List of all pokemon contained in the Pokedex.
+     */
     private List<Pokemon> pokemons;
 
     /**
-     * @return pf PokemonFactory
+     * @return pokemonFactory PokemonFactory
      */
-    public IPokemonFactory getPf() {
-        return pf;
+    public IPokemonFactory getPokemonFactory() {
+        return pokemonFactory;
     }
 
     /**
-     * @return pmp PokemonMetadataProvider
+     * @return metadataProvider PokemonMetadataProvider
      */
-    public IPokemonMetadataProvider getPmp() {
-        return pmp;
+    public IPokemonMetadataProvider getMetadataProvider() {
+        return metadataProvider;
     }
 
     /**
-     * @param pf PokemonFactory
+     * @param localPokemonFactory PokemonFactory
      */
-    public void setPf(IPokemonFactory pf) {
-        this.pf = pf;
+    public void setPokemonFactory(final IPokemonFactory localPokemonFactory) {
+        this.pokemonFactory = localPokemonFactory;
     }
 
     /**
-     * @param pmp PokemonMetadataProvider
+     * @param localMetadataProvider PokemonMetadataProvider
      */
-    public void setPmp(IPokemonMetadataProvider pmp) {
-        this.pmp = pmp;
+    public void setMetadataProvider(
+            final IPokemonMetadataProvider localMetadataProvider
+    ) {
+        this.metadataProvider = localMetadataProvider;
     }
 
     /**
-     * @param pokemons List<Pokemon>
+     * @param localPokemons List<Pokemon>
      */
-    public void setPokemons(List<Pokemon> pokemons) {
-        this.pokemons = pokemons;
+    public void setPokemons(final List<Pokemon> localPokemons) {
+        this.pokemons = localPokemons;
     }
+
     /**
-     * Pokedex constructor
-     * @param pmp
-     * @param pf
+     * Pokedex constructor that initializes
+     * the Pokedex with the given metadata provider
+     * and pokemon factory.
+     *
+     * @param localMetadataProvider PokemonMetadataProvider
+     * @param localPokemonFactory   PokemonFactory
      */
-    public Pokedex(IPokemonMetadataProvider pmp, IPokemonFactory pf)
-    {
-        this.pmp=pmp;
-        this.pf=pf;
-        pokemons = new ArrayList<Pokemon>();
+    public Pokedex(final IPokemonMetadataProvider localMetadataProvider,
+                   final IPokemonFactory localPokemonFactory) {
+        this.metadataProvider = localMetadataProvider;
+        this.pokemonFactory = localPokemonFactory;
+        this.pokemons = new ArrayList<>();
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
     public int size() {
         return pokemons.size();
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
-    public int addPokemon(Pokemon pokemon) {
+    public int addPokemon(final Pokemon pokemon) {
         pokemons.add(pokemon);
-        return pokemons.size()-1;
+        return pokemons.size() - 1;
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
-    public Pokemon getPokemon(int id) throws PokedexException {
-        for(Pokemon p : pokemons)
-        {
-            if(p.getIndex()==id)
-            {
+    public Pokemon getPokemon(final int id) throws PokedexException {
+        for (final Pokemon p : pokemons) {
+            if (p.getIndex() == id) {
                 return p;
             }
         }
         throw new PokedexException("Pokemon introuvable");
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
     public List<Pokemon> getPokemons() {
         return pokemons;
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
-    public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
-        List<Pokemon> sortedPokemons = new ArrayList<>(pokemons);
+    public List<Pokemon> getPokemons(final Comparator<Pokemon> order) {
+        final List<Pokemon> sortedPokemons = new ArrayList<>(pokemons);
         sortedPokemons.sort(order);
         return sortedPokemons;
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
-        return pf.createPokemon(index, cp, hp, dust, candy);
+    public Pokemon createPokemon(
+            final int index,
+            final int cp,
+            final int hp,
+            final int dust,
+            final int candy
+    ) throws PokedexException {
+        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
     }
-    /** {@inheritDoc} **/
+
+    /**
+     * {@inheritDoc}
+     **/
     @Override
-    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        return pmp.getPokemonMetadata(index);
+    public PokemonMetadata getPokemonMetadata(final int index)
+            throws PokedexException {
+        return metadataProvider.getPokemonMetadata(index);
     }
 }
