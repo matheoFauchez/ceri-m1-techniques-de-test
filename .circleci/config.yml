@@ -55,7 +55,9 @@ jobs:
                 badge_url="https://img.shields.io/badge/checkstyle-${violations}-red"
             fi
 
-            sed -i "s|\[Checkstyle\](.*)|![Checkstyle]($badge_url)|" README.md
+            sed -i "s|\[Checkstyle\]|![Checkstyle]($badge_url)|" README.md
+
+            cat README.md
             
             git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
             git config --global user.name "matheoFauchez"
