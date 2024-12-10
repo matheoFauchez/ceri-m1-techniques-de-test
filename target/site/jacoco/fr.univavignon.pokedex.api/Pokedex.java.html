@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pokedex.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ceri-m1-techniques-de-test</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">Pokedex.java</span></div><h1>Pokedex.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * IPokedex implementation. A Pokedex aims to store all information about
+ * captured pokemon, as well as their default metadata.
+ *
+ * @author fv
+ */
+public class Pokedex implements IPokedex {
+
+    /**
+     * PokemonMetadataProvider used to retrieve metadata for each pokemon.
+     */
+    private IPokemonMetadataProvider metadataProvider;
+
+    /**
+     * PokemonFactory used to create new pokemon instances.
+     */
+    private IPokemonFactory pokemonFactory;
+
+    /**
+     * List of all pokemon contained in the Pokedex.
+     */
+    private List&lt;Pokemon&gt; pokemons;
+
+    /**
+     * @return pokemonFactory PokemonFactory
+     */
+    public IPokemonFactory getPokemonFactory() {
+<span class="nc" id="L34">        return pokemonFactory;</span>
+    }
+
+    /**
+     * @return metadataProvider PokemonMetadataProvider
+     */
+    public IPokemonMetadataProvider getMetadataProvider() {
+<span class="nc" id="L41">        return metadataProvider;</span>
+    }
+
+    /**
+     * @param localPokemonFactory PokemonFactory
+     */
+    public void setPokemonFactory(final IPokemonFactory localPokemonFactory) {
+<span class="nc" id="L48">        this.pokemonFactory = localPokemonFactory;</span>
+<span class="nc" id="L49">    }</span>
+
+    /**
+     * @param localMetadataProvider PokemonMetadataProvider
+     */
+    public void setMetadataProvider(
+            final IPokemonMetadataProvider localMetadataProvider
+    ) {
+<span class="nc" id="L57">        this.metadataProvider = localMetadataProvider;</span>
+<span class="nc" id="L58">    }</span>
+
+    /**
+     * @param localPokemons List&lt;Pokemon&gt;
+     */
+    public void setPokemons(final List&lt;Pokemon&gt; localPokemons) {
+<span class="nc" id="L64">        this.pokemons = localPokemons;</span>
+<span class="nc" id="L65">    }</span>
+
+    /**
+     * Pokedex constructor that initializes
+     * the Pokedex with the given metadata provider
+     * and pokemon factory.
+     *
+     * @param localMetadataProvider PokemonMetadataProvider
+     * @param localPokemonFactory   PokemonFactory
+     */
+    public Pokedex(final IPokemonMetadataProvider localMetadataProvider,
+<span class="fc" id="L76">                   final IPokemonFactory localPokemonFactory) {</span>
+<span class="fc" id="L77">        this.metadataProvider = localMetadataProvider;</span>
+<span class="fc" id="L78">        this.pokemonFactory = localPokemonFactory;</span>
+<span class="fc" id="L79">        this.pokemons = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L80">    }</span>
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public int size() {
+<span class="fc" id="L87">        return pokemons.size();</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public int addPokemon(final Pokemon pokemon) {
+<span class="fc" id="L95">        pokemons.add(pokemon);</span>
+<span class="fc" id="L96">        return pokemons.size() - 1;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public Pokemon getPokemon(final int id) throws PokedexException {
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        for (final Pokemon p : pokemons) {</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            if (p.getIndex() == id) {</span>
+<span class="fc" id="L106">                return p;</span>
+            }
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">        throw new PokedexException(&quot;Pokemon introuvable&quot;);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public List&lt;Pokemon&gt; getPokemons() {
+<span class="fc" id="L117">        return pokemons;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public List&lt;Pokemon&gt; getPokemons(final Comparator&lt;Pokemon&gt; order) {
+<span class="fc" id="L125">        final List&lt;Pokemon&gt; sortedPokemons = new ArrayList&lt;&gt;(pokemons);</span>
+<span class="fc" id="L126">        sortedPokemons.sort(order);</span>
+<span class="fc" id="L127">        return sortedPokemons;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public Pokemon createPokemon(
+            final int index,
+            final int cp,
+            final int hp,
+            final int dust,
+            final int candy
+    ) throws PokedexException {
+<span class="fc" id="L141">        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     **/
+    @Override
+    public PokemonMetadata getPokemonMetadata(final int index)
+            throws PokedexException {
+<span class="fc" id="L150">        return metadataProvider.getPokemonMetadata(index);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

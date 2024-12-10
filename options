@@ -1,0 +1,24 @@
+-classpath
+'/home/circleci/.m2/repository/org/apache/commons/commons-collections4/4.0/commons-collections4-4.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/circleci/project/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/circleci/project/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'ceri-m1-techniques-de-test 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/home/circleci/project/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'ceri-m1-techniques-de-test 1.0-SNAPSHOT API'

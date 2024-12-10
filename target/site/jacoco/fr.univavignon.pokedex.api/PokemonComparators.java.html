@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PokemonComparators.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ceri-m1-techniques-de-test</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">PokemonComparators.java</span></div><h1>PokemonComparators.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
+
+import java.util.Comparator;
+
+/**
+ * Enumeration of pokemon comparators.
+ * Provides different comparison strategies for Pokemon.
+ *
+ * @author fv
+ */
+<span class="fc" id="L11">public enum PokemonComparators implements Comparator&lt;Pokemon&gt; {</span>
+
+    /**
+     * Comparator using Pokemon name.
+     **/
+<span class="fc" id="L16">    NAME(Comparator.comparing(Pokemon::getName)),</span>
+
+    /**
+     * Comparator using Pokemon index.
+     **/
+<span class="fc" id="L21">    INDEX(Comparator.comparing(Pokemon::getIndex)),</span>
+
+    /**
+     * Comparator using Pokemon combat point.
+     **/
+<span class="fc" id="L26">    CP(Comparator.comparing(Pokemon::getCp));</span>
+
+    /**
+     * Delegate comparator instance.
+     **/
+    private final Comparator&lt;Pokemon&gt; delegate;
+
+    /**
+     * Default constructor.
+     *
+     * @param ldelegate Delegate comparator instance.
+     */
+<span class="fc" id="L38">    PokemonComparators(final Comparator&lt;Pokemon&gt; ldelegate) {</span>
+<span class="fc" id="L39">        this.delegate = ldelegate;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Compares two Pokemon instances.
+     *
+     * @param first  The first Pokemon to compare.
+     * @param second The second Pokemon to compare.
+     * @return a negative integer, zero, or a positive integer as the first
+     * Pokemon is less than, equal to, or greater than the second.
+     */
+    @Override
+    public int compare(final Pokemon first, final Pokemon second) {
+<span class="fc" id="L52">        return delegate.compare(first, second);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

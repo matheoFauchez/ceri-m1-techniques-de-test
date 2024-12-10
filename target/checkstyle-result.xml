@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/IPokedex.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/IPokedexFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/IPokemonFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/IPokemonMetadataProvider.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/IPokemonTrainerFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/Pokedex.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokedexException.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokedexFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/Pokemon.java">
+<error line="49" column="12" severity="error" message="More than 7 parameters (found 10)." source="com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck"/>
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonComparators.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonMetadata.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonMetadataProvider.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonTrainer.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/PokemonTrainerFactory.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/RocketPokemonFactory.java">
+<error line="1" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="7" column="43" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.apache.commons.collections4.map.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="8" column="1" severity="error" message="Redundant import from the same package - fr.univavignon.pokedex.api.IPokemonFactory." source="com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportCheck"/>
+<error line="9" column="1" severity="error" message="Redundant import from the same package - fr.univavignon.pokedex.api.Pokemon." source="com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportCheck"/>
+<error line="13" column="5" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="26" column="29" severity="error" message="&apos;1000000&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="31" column="24" severity="error" message="&apos;10000&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="34" column="5" severity="error" message="Class &apos;RocketPokemonFactory&apos; looks like designed for extension (can be subclassed), but the method &apos;createPokemon&apos; does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class &apos;RocketPokemonFactory&apos; final or making the method &apos;createPokemon&apos; static/final/abstract/empty, or adding allowed annotation for the method." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="35" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="35" column="34" severity="error" message="Parameter index should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="45" severity="error" message="Parameter cp should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="53" severity="error" message="Parameter hp should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="61" severity="error" message="Parameter dust should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="71" severity="error" message="Parameter candy should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="47" column="22" severity="error" message="&apos;1000&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="48" column="23" severity="error" message="&apos;1000&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="49" column="23" severity="error" message="&apos;1000&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="57" severity="error" message="Line is longer than 80 characters (found 91)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/Team.java">
+</file>
+<file name="/home/circleci/project/src/main/java/fr/univavignon/pokedex/api/package-info.java">
+</file>
+</checkstyle>

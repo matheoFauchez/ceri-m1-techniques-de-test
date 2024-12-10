@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PokemonMetadata.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ceri-m1-techniques-de-test</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">PokemonMetadata.java</span></div><h1>PokemonMetadata.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
+
+/**
+ * Pokemon metadata POJO (Plain Old Java Object).
+ * This class holds the metadata for a Pokemon, such as its index, name,
+ * attack, defense, and stamina levels.
+ *
+ * @author fv
+ */
+public class PokemonMetadata {
+
+    /**
+     * Pokemon index.
+     **/
+    private final int index;
+
+    /**
+     * Pokemon name.
+     **/
+    private final String name;
+
+    /**
+     * Pokemon attack level.
+     **/
+    private final int attack;
+
+    /**
+     * Pokemon defense level.
+     **/
+    private final int defense;
+
+    /**
+     * Pokemon stamina level.
+     **/
+    private final int stamina;
+
+    /**
+     * Default constructor for creating a PokemonMetadata object.
+     *
+     * @param lindex   Pokemon index.
+     * @param lname    Pokemon name.
+     * @param lattack  Attack level.
+     * @param ldefense Defense level.
+     * @param lstamina Stamina level.
+     */
+    public PokemonMetadata(final int lindex,
+                           final String lname,
+                           final int lattack,
+                           final int ldefense,
+<span class="fc" id="L50">                           final int lstamina) {</span>
+<span class="fc" id="L51">        this.index = lindex;</span>
+<span class="fc" id="L52">        this.name = lname;</span>
+<span class="fc" id="L53">        this.attack = lattack;</span>
+<span class="fc" id="L54">        this.defense = ldefense;</span>
+<span class="fc" id="L55">        this.stamina = lstamina;</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Gets the Pokemon index.
+     *
+     * @return Pokemon index.
+     */
+    public int getIndex() {
+<span class="fc" id="L64">        return index;</span>
+    }
+
+    /**
+     * Gets the Pokemon name.
+     *
+     * @return Pokemon name.
+     */
+    public String getName() {
+<span class="fc" id="L73">        return name;</span>
+    }
+
+    /**
+     * Gets the Pokemon attack level.
+     *
+     * @return Pokemon attack level.
+     */
+    public int getAttack() {
+<span class="fc" id="L82">        return attack;</span>
+    }
+
+    /**
+     * Gets the Pokemon defense level.
+     *
+     * @return Pokemon defense level.
+     */
+    public int getDefense() {
+<span class="fc" id="L91">        return defense;</span>
+    }
+
+    /**
+     * Gets the Pokemon stamina level.
+     *
+     * @return Pokemon stamina level.
+     */
+    public int getStamina() {
+<span class="fc" id="L100">        return stamina;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

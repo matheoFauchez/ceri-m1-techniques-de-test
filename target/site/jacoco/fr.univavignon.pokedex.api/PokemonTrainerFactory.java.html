@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PokemonTrainerFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ceri-m1-techniques-de-test</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">PokemonTrainerFactory.java</span></div><h1>PokemonTrainerFactory.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
+
+/**
+ * Factory class for creating PokemonTrainer instances.
+ *
+ * @author fv
+ */
+<span class="fc" id="L8">public class PokemonTrainerFactory implements IPokemonTrainerFactory {</span>
+
+    /**
+     * Creates a new PokemonTrainer.
+     *
+     * @param name           The name of the trainer.
+     * @param team           The team of the trainer.
+     * @param pokedexFactory The factory used to create the trainer's pokedex.
+     * @return A new PokemonTrainer instance.
+     */
+    @Override
+    public PokemonTrainer createTrainer(final String name, final Team team,
+                                        final IPokedexFactory pokedexFactory) {
+        // Create the Pokedex using the provided factory.
+<span class="fc" id="L22">        IPokedex pokedex = pokedexFactory.createPokedex(</span>
+                new PokemonMetadataProvider(),
+                new PokemonFactory());
+        // Return a new PokemonTrainer with the provided details.
+<span class="fc" id="L26">        return new PokemonTrainer(name, team, pokedex);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
