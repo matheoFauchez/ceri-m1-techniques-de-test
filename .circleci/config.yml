@@ -37,9 +37,9 @@ jobs:
           name: Upload coverage to Codecov
           command: |-
             curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -r matheoFauchez/ceri-m1-techniques-de-test
-      - run:
-          name: Debug README modification
-          command: cat README.md
+      #- run:
+      #    name: Debug README modification
+      #    command: cat README.md
 
       - run:
           name: Checkstyle
@@ -55,9 +55,9 @@ jobs:
                 badge_url="https://img.shields.io/badge/checkstyle-${violations}-red"
             fi
 
-            sed -i "s|\[Checkstyle\]|![Checkstyle]($badge_url)|" README.md
+            sed -i "s|.*Checkstyle.*|![Checkstyle]($badge_url)|" README.md
 
-            cat README.md
+            #cat README.md
             
             git config --global user.email "matheo.fauchez@alumni.univ-avignon.fr"
             git config --global user.name "matheoFauchez"
