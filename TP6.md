@@ -28,11 +28,10 @@ décalé
 de 1 et on a donc maintenant 152 pokemons (de -1 a 151)
 
 #### Gestion des erreurs
-
+Conflit avec ce que nous avions prévu dans le TDD.
 L'erreur n'est pas gérée avec une classe d'exception comme nous avons pu le
 faire
-Mais avec le renvoi d'un pokemon avec index 0 et des statistiques aberrantes (
-1000,1000,1000)
+Mais avec le renvoi d'un pokemon avec index 0.
 
 #### Calcul de l'indice de perfection (IV)
 
