@@ -38,6 +38,10 @@ jobs:
           command: |-
             curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -r matheoFauchez/ceri-m1-techniques-de-test
       - run:
+          name: Debug README modification
+          command: cat README.md
+
+      - run:
           name: Checkstyle
           command: |-
             mvn checkstyle:checkstyle
